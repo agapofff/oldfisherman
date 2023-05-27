@@ -4038,8 +4038,11 @@ class wpdb {
 		$db_server_info = $this->db_server_info();
 
 		// Account for MariaDB version being prefixed with '5.5.5-' on older PHP versions.
-		if ( '5.5.5' === $db_version && str_contains( $db_server_info, 'MariaDB' )
-			&& PHP_VERSION_ID < 80016 // PHP 8.0.15 or older.
+		if ( 
+            '5.5.5' === $db_version 
+            && PHP_VERSION_ID < 80016 // PHP 8.0.15 or older.
+            // && str_contains( $db_server_info, 'MariaDB' )
+            && strpos($db_server_info, 'MariaDB') !== false
 		) {
 			// Strip the '5.5.5-' prefix and set the version to the correct value.
 			$db_server_info = preg_replace( '/^5\.5\.5-(.*)/', '$1', $db_server_info );

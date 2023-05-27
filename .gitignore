@@ -1,1 +1,6 @@
+wp-config.php
 pass.txt
+/wp-content/cache/
+/wp-content/backups-dup-lite/
+/wp-content/uploads/
+*.log

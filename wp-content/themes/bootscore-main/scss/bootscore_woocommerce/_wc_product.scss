@@ -1,0 +1,26 @@
+/*--------------------------------------------------------------
+WooCommerce Product Page
+--------------------------------------------------------------*/
+
+// Product page price font-size
+.woocommerce div.product p.price,
+.woocommerce div.product span.price {
+  font-size: 2rem;
+}
+
+// Line break in meta
+.product_meta .sku_wrapper::after,
+.product_meta .posted_in::after {
+  content: "\A";
+  white-space: pre;
+}
+
+// Reset italic font in product additional information tab
+.woocommerce table.shop_attributes td {
+  font-style: normal;
+}
+
+// Fix related products if no product tab (disabled reviews, no product description, no attributes) is used
+.related.products {
+  clear: both;
+}

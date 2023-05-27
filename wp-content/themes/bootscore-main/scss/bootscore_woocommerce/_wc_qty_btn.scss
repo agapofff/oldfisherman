@@ -1,0 +1,42 @@
+/*--------------------------------------------------------------
+WooCommerce Quantity Input
+--------------------------------------------------------------*/
+
+.quantity {
+  @extend .input-group;
+}
+
+.qty {
+  @extend .form-control;
+}
+
+.woocommerce .quantity input {
+  // Hide browser arrows in quantity input
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    display: none;
+    margin: 0;
+  }
+
+  &.qty {
+    appearance: textfield;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+  }
+}
+
+// Fixed width for quantity input
+.quantity {
+  width: 140px;
+
+  // Disable input if product is 1 in stock or limit purchases to 1 item per order
+  // https://github.com/woocommerce/woocommerce/pull/35767
+  [max="1"] {
+    @extend :disabled;
+  }
+}
+
+// Hide quantity input if product is sold individually
+.sold-individually .quantity {
+  display: none;
+}

@@ -26,19 +26,19 @@ do_action('woocommerce_before_customer_login_form');
 
 <div class="row">
     <div class="col-md-8 col-lg-7">
-        <ul class="nav nav-underline" id="signIn" role="tablist">
+        <ul class="nav nav-underline" id="signIn">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login-tab-pane" type="button" role="tab" aria-controls="login-tab-pane" aria-selected="true">
+                <a href="#login" class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" role="tab" aria-controls="login" aria-selected="true">
                     <?php esc_html_e('Login', 'woocommerce'); ?>
-                </button>
+                </a>
             </li>
     <?php
         if ('yes' === get_option('woocommerce_enable_myaccount_registration')) {
     ?>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register-tab-pane" type="button" role="tab" aria-controls="register-tab-pane" aria-selected="false">
+                <a href="#register" class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" role="tab" aria-controls="register" aria-selected="false">
                     <?php esc_html_e('Register', 'woocommerce'); ?>
-                </button>
+                </a>
             </li>
     <?php
         }
@@ -46,7 +46,7 @@ do_action('woocommerce_before_customer_login_form');
         </ul>
 
         <div class="tab-content mt-3" id="signInContent">
-            <div class="tab-pane fade show active" id="login-tab-pane" role="tabpanel" aria-labelledby="login-tab" tabindex="0">
+            <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab" tabindex="0">
                 <form class="woocommerce-form woocommerce-form-login login" method="post">
                     <?php do_action('woocommerce_login_form_start'); ?>
 
@@ -86,7 +86,7 @@ do_action('woocommerce_before_customer_login_form');
     <?php
         if ('yes' === get_option('woocommerce_enable_myaccount_registration')) {
     ?>
-            <div class="tab-pane fade" id="register-tab-pane" role="tabpanel" aria-labelledby="register-tab" tabindex="0">
+            <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab" tabindex="0">
                 <form method="post" class="card-body" <?php do_action('woocommerce_register_form_tag'); ?>>
                     <?php do_action('woocommerce_register_form_start'); ?>
 

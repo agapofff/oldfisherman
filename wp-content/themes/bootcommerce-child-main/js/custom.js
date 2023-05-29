@@ -1,13 +1,21 @@
 jQuery(document).ready(function ($) {
-
+    // $.ajaxSetup({ 
+        // cache: true
+    // });
+    
+    
     // LOADING
-    function loading(show = true) {
-        if (show) {
-            $('#loader').show();
-        } else {
-            $('#loader').hide();
+    var loadingTimer;
+    var loading = function (show = true) {
+            if (show) {
+                $('#loader').show();
+                loadingTimer = setTimeout(function () {
+                    loading(false);
+                }, 3000);
+            } else {
+                $('#loader').hide();
+            }
         }
-    }
     $('form').on('beforeSubmit', function () {
         loading(false);
     });
@@ -117,15 +125,15 @@ jQuery(document).ready(function ($) {
         selectors: [
             'title',
             'meta[name=description]',
-            '#content',
-            '#nav-main',
-        ]
+            'body',
+        ],
     });
     document.addEventListener('pjax:send', function () {
         loading();
     });
     document.addEventListener('pjax:complete', function () {
         loading(false);
+        clearTimeout(loadingTimer);
         $(window).lazyLoadXT();
         dropdownHover();
         languageSwitcherFormatter();
